@@ -10,5 +10,13 @@ class Opera extends Model
     /** @use HasFactory<\Database\Factories\OperaFactory> */
     use HasFactory;
 
-    protected $guarded = [];
+    protected $fillable = [
+        'title',
+        'author',
+        'dimension',
+        'tecnique',
+        'date',
+        'price',
+        'imgPath'
+    ];
 }

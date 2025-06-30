@@ -11,3 +11,5 @@ Route::get('/user', function (Request $request) {
 
 
 Route::get('/opere', [OperaController::class,'index']);
+Route::post('/upload', [OperaController::class,'store']);
+

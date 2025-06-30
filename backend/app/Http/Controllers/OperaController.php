@@ -15,13 +15,38 @@ class OperaController extends Controller
         return response()->json(Opera::all(), 200, ['Content-Type' => 'application/json']);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
+
+public function store(Request $request)
+{
+    try {
+        $validated = $request->validate([
+            'title' => 'required|string',
+            'author' => 'nullable|string',
+            'dimension' => 'nullable|string',
+            'tecnique' => 'nullable|string',
+            'date' => 'nullable|string',
+            'price' => 'nullable|string',
+            'imgPath' => 'nullable|image|max:2048',
+        ]);
+
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('public/uploads');
+            $validated['imgPath'] = $path;
+        }
+
+        Opera::create($validated);
+
+        return response()->json([
+            'message' => 'Opera aggiunta con successo',
+            'data' => $validated
+        ]);
+    } catch (\Exception $e) {
+        return response()->json([
+            'error' => $e->getMessage()
+        ], 500);
     }
+}
+
 
     /**
      * Display the specified resource.

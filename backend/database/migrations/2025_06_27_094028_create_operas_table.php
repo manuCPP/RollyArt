@@ -13,9 +13,13 @@ return new class extends Migration
     {
         Schema::create('operas', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('description')->nullable();
-            $table->string('imgPath');
+            $table->string('title')->nullable();
+            $table->string('author')->nullable();
+            $table->string('tecnique')->nullable();
+            $table->string('date')->nullable();
+            $table->string('price')->nullable();
+            $table->string('dimension')->nullable();
+            $table->string('imgPath')->nullable();
             $table->timestamps();
         });
     }

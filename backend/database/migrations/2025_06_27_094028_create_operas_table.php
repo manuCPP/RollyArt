@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('price')->nullable();
             $table->string('dimension')->nullable();
             $table->string('imgPath')->nullable();
+            $table->boolean('isSold');
             $table->timestamps();
         });
     }

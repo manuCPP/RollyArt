@@ -17,6 +17,7 @@ class Opera extends Model
         'tecnique',
         'date',
         'price',
-        'imgPath'
+        'imgPath',
+        'isSold'
     ];
 }

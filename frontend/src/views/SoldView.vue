@@ -1,5 +1,5 @@
 <script setup>
-import Carousel from '@/components/Carousel.vue'
+import Carousel2 from '@/components/Carousel2.vue'
 import Ray from '@/components/Ray.vue'
 </script>
 
@@ -9,7 +9,7 @@ import Ray from '@/components/Ray.vue'
         <Ray top="10rem"/>
         <Ray top="15rem"/>
         <img  src="@/assets/lamp.png" alt="">
-        <Carousel/>
+        <Carousel2/>
     </main>
 </template>
 

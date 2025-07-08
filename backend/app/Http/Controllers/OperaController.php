@@ -19,25 +19,30 @@ class OperaController extends Controller
 public function store(Request $request)
 {
     try {
+
+
+        // Validazione solo dei campi testo
         $validated = $request->validate([
             'title' => 'required|string',
-            'author' => 'nullable|string',
-            'dimension' => 'nullable|string',
-            'tecnique' => 'nullable|string',
-            'date' => 'nullable|string',
-            'price' => 'nullable|string',
-            'imgPath' => 'nullable|image|max:2048',
+            'author' => 'required|string',
+            'dimension' => 'required|string',
+            'tecnique' => 'required|string',
+            'date' => 'required|string',
+            'price' => 'required|string',
+            'isSold' => 'required|string',
+            // NIENTE 'image' qui
         ]);
 
         if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('public/uploads');
+            $path = $request->file('image')->store('uploads', 'public');
             $validated['imgPath'] = $path;
         }
 
+        // Creazione record
         Opera::create($validated);
 
         return response()->json([
-            'message' => 'Opera aggiunta con successo',
+            'message' => 'Opera aggiunta con successo (upload immagine test)',
             'data' => $validated
         ]);
     } catch (\Exception $e) {
@@ -46,6 +51,7 @@ public function store(Request $request)
         ], 500);
     }
 }
+
 
 
     /**

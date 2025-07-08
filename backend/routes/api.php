@@ -12,4 +12,12 @@ Route::get('/user', function (Request $request) {
 
 Route::get('/opere', [OperaController::class,'index']);
 Route::post('/upload', [OperaController::class,'store']);
+Route::get('/immagini/{filename}', function($filename){
+    $path = storage_path("app/private/{$filename}");
 
+    if (!file_exists($path)) {
+        abort(404);
+    }
+
+    return response()->file($path);
+});

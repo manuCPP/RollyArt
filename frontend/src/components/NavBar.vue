@@ -17,16 +17,16 @@ const toggleMenu = () =>{
         <h1>RollyArt</h1>
         <div v-show="width < 767" :class="`menu-wrap ${isActive ? 'open' : ''}`">
             <button @click="toggleMenu()"><img style="background-color: transparent;" src="@/assets/menu.png" width="100%" height="100%" alt=""></button>
-            <RouterLink v-show="isActive" class="link">Home</RouterLink>
-            <RouterLink v-show="isActive" class="link">About</RouterLink>
-            <RouterLink v-show="isActive" class="link">Sold</RouterLink>
+            <RouterLink to="/" v-show="isActive" class="link">Home</RouterLink>
+            <RouterLink to="/add" v-show="isActive" class="link">About</RouterLink>
+            <RouterLink to="/sold" v-show="isActive" class="link">Sold</RouterLink>
             <RouterLink v-show="isActive" class="link">Contact</RouterLink>
         </div>
 
         <div v-show="width > 767" class="normalNav">
-            <RouterLink class="normalLink">Home</RouterLink>
-            <RouterLink class="normalLink">About</RouterLink>
-            <RouterLink class="normalLink">Sold</RouterLink>
+            <RouterLink to="/" class="normalLink">Home</RouterLink>
+            <RouterLink to="/add" class="normalLink">About</RouterLink>
+            <RouterLink to="/sold" class="normalLink">Sold</RouterLink>
             <RouterLink class="normalLink">Contact</RouterLink>
         </div>
     </nav>
@@ -49,7 +49,16 @@ const toggleMenu = () =>{
         font-family: Inter;
         font-size: 1rem;
         text-decoration: none;
+        color: rgb(49, 49, 49);
+        transition: 0.2s ease-out;
+    }
+
+    .normalLink:hover{
+        scale: 1.05;
         color: black;
+        font-weight: 500;
+        cursor: pointer;
+
     }
 
     .normalLink:nth-child(4){
@@ -57,6 +66,15 @@ const toggleMenu = () =>{
         font-weight: 600;
         padding: 0.5rem 1rem;
         border-radius: 2rem;
+        transition: 0.5s ease-out;
+    }
+
+    .normalLink:nth-child(4):hover{
+        background-color: black;
+        color: white;
+        font-weight: 500;
+        scale: 1.1;
+        cursor: pointer;
     }
 
 

@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 
+
 const fileInput = ref(null)
 const selectedFile = ref(null)
 
@@ -23,9 +24,31 @@ const formData = ref({
   tecnique: '',
   date: '',
   price: '',
+  isSold: false,
 })
 
-const buildData = () => {
+
+function convertToBlob(file) {
+  return new Promise((resolve) => {
+    const reader = new FileReader()
+    reader.onload = () => {
+      const img = new Image()
+      img.onload = () => {
+        const canvas = document.createElement('canvas')
+        canvas.width = img.width
+        canvas.height = img.height
+        canvas.getContext('2d').drawImage(img, 0, 0)
+        canvas.toBlob((blob) => {
+          resolve(blob)
+        }, 'image/jpeg', 0.95)
+      }
+      img.src = reader.result
+    }
+    reader.readAsDataURL(file)
+  })
+}
+
+const buildData = async () => {
   const formToSend = new FormData()
   formToSend.append('title', formData.value.title)
   formToSend.append('author', formData.value.author)
@@ -33,9 +56,13 @@ const buildData = () => {
   formToSend.append('tecnique', formData.value.tecnique)
   formToSend.append('date', formData.value.date)
   formToSend.append('price', formData.value.price)
+  formToSend.append('isSold', formData.value.isSold)
 
   if (selectedFile.value) {
-    formToSend.append('image', selectedFile.value)
+    //formToSend.append('image', selectedFile.value)
+    const blob = await convertToBlob(selectedFile.value)
+    formToSend.append('image', blob, 'converted.jpg')
+
   }
 
   return formToSend
@@ -45,23 +72,24 @@ const sendFormData = async () => {
   try {
     const response = await fetch('/api/upload', {
       method: 'POST',
-      body: buildData()
+      body: await buildData()
     })
 
     const text = await response.text()
-console.log('Risposta grezza:', text)
+    console.log('Risposta grezza:', text)
 
-    
+
   } catch (error) {
     console.error('Errore durante l’invio:', error)
   }
 }
+
 </script>
 
 <template>
     <div class="wrapper">
 
-        <form @submit.prevent="sendFormData" style="width: 80%; padding: 1rem; border-radius: 0.5rem; background-color: white; box-shadow: 0px 4px 8px 2px #dad8d8; display: flex; flex-direction: column; align-items: center;">
+        <form @submit.prevent="sendFormData" style="width: 80%; height: 65%; padding: 1rem; border-radius: 0.5rem; background-color: white; box-shadow: 0px 4px 8px 2px #dad8d8; display: flex; flex-direction: column; justify-content: center; align-items: center;">
             <h1>Crea una nuova opera</h1>
             <input v-model="formData.title" placeholder="Inserisci un Titolo" type="text">
             <div class="row">
@@ -74,10 +102,15 @@ console.log('Risposta grezza:', text)
                 <input v-model="formData.price" placeholder="Inserisci qui il prezzo" type="text">
             </div>
 
+            <div class="row" style="display: flex; align-items: center; justify-content: space-between; background-color: transparent; ">
+              <input style=" width: 4vh;  background-color: red;" type="checkbox" v-model="formData.isSold">
+              <label style="display: flex; justify-content: center; text-align: left; " for="">Venduto</label>
+            </div>
+
             <div class="row">
                 <button type="button" @click="simulateClick" style="color: rgb(18, 95, 238); background-color: white; width: 50%;" >Upload File</button>
                 <input @change="handleFileChange" ref="fileInput" type="file" style="display: none;">
-                <label for="">No file chosen</label>
+                <label style="text-align: center;" for="">{{ selectedFile ? `${selectedFile?.name}` : 'Nessuna immagine' }}</label>
             </div>
 
 
@@ -86,6 +119,10 @@ console.log('Risposta grezza:', text)
 
 
     </div>
+    <div class="debug">
+  <pre>File: {{ selectedFile?.name }}</pre>
+</div>
+
 </template>
 
 <style scoped>
@@ -160,6 +197,17 @@ console.log('Risposta grezza:', text)
         background-color: rgba(18, 95, 238, 0.845);
         scale: 1.025;
         cursor: pointer;
+    }
+
+    @media (min-width: 768px) {
+        form{
+            height: 80% !important;
+            padding: 2rem !important;
+            width: 50% !important;
+        }
+        input, button{
+          height: 5vh;
+        }
     }
 
 

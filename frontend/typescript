@@ -1,0 +1,105 @@
+Script started on 2025-07-11 03:10:03+02:00 [TERM="xterm-256color" TTY="/dev/pts/2" COLUMNS="73" LINES="8"]
+[1m[7m%[27m[1m[0m                                                                         [0m[27m[24m[J󰣇 [1;38;2;139;233;253mDocuments/RollyArt/frontend[0m [38;2;145;152;161m  Master[0m [38;2;118;159;240m !? [1;32m❯[0m [K[14C[1;92m [0m[38;2;160;169;203m  03:10 [0m[25D[?2004hs[4ms[24m[4ms[24m[90mcript[39m[4ms[39m[4mc[24m[24m[1m[31ms[24m[1m[31mc[0m[39m[1m[31ms[1m[31mc[1m[31mt[0m[39m[39m [39m [39m [1m[31mt[1m[31mi[0m[39m[1m[31mi[1m[31mp[0m[39m[1m[31mi[0m[39m[0m[39m [1m[31mt[0m[39m[0m[39m [1m[31ms[1m[31mc[0m[39m[0m[39m [90mript[39m[1m[31ms[1m[31mc[1m[31mr[0m[39m[1m[31mr[1m[31mi[0m[39m[1m[31mi[1m[31mp[0m[39m[1m[31mp[1m[31mt[0m[39m[0m[32ms[0m[32mc[0m[32mr[0m[32mi[0m[32mp[0m[32mt[39m[32mt[32m [39m[32mt[39m[39m [90mindex.html[39m[K[10D[39ms[K[6C[1;92m [0m[38;2;160;169;203m  03:10 [0m[17D[4ms[24m[90mrc/[39m[4ms[39m[4mr[24m[4mr[39m[4mc[39m[1m[4m/[0m[24m[90mApp.vue[39m[K[1m[4m/[39m[1m[4mc[0m[24m[K[2C[1;92m [0m[38;2;160;169;203m  03:10 [0m[13D[0m[4m/[0m[4mc[24m[90momponents/[39m[K[10D[4mc[39m[4mo[24m[4mo[39m[4mn[24m[39m [39m [39m [39m [39m [39m [39m [39m [8D[90mstants/[39m[4mn[39m[4ms[39m[4mt[39m[4ma[39m[4mn[39m[4mt[39m[4ms[39m[1m[4m/[0m[24m[90mcosta[90mn[90mts.js[39m[K[A[62C[1m[4m/[39m[1m[4mm[0m[24m[K[1B[K[A[69C[0m[4m/[0m[4mm[24m[90mail.[90mj[90ms[39m[K[A[67C[4mm[39m[4ma[24m[4ma[39m[4mi[39m[4ml[39m[4m.[4mj[39m[4ms[24m[1m [0m[90m--append[39m[8D[0m [39m [39m [39m [39m [39m [39m [39m [39m [9D[?1l>[?2004l
+]2;script src/constants/mail.js]1;scriptScript started, output log file is 'src/constants/mail.js'.
+[1m[7m%[27m[1m[0m                                                                         [0m[27m[24m[J󰣇 [1;38;2;139;233;253mDocuments/RollyArt/frontend[0m [38;2;145;152;161m  Master[0m [38;2;118;159;240m !? [1;32m❯[0m [K[14C[1;92m [0m[38;2;160;169;203m  03:10 [0m[25D[?2004hn[4mn[24m[4mn[24m[90mpm i nodemailer[39m[K[15D[4mn[39m[4mo[24m[K[12C[1;92m [0m[38;2;160;169;203m  03:10 [0m[23D[90mcorrect[39m[4mn[4mo[39m[4md[24m[39m [39m [39m [39m [39m [39m [90me[39m[4md[39m[4me[24m[24m[32mn[24m[32mo[24m[32md[24m[32me[39m[32me[32m [39m[32me[39m[39m [90mindex.html[39m[K[10D[39ms[K[8C[1;92m [0m[38;2;160;169;203m  03:10 [0m[19D[4ms[24m[90mrc/[39m[4ms[39m[4mr[24m[4mr[39m[4mc[24m[4mc[39m[1m[4m/[0m[24m[90mApp.vue[39m[K[1m[4m/[39m[1m[4mc[0m[24m[K[4C[1;92m [0m[38;2;160;169;203m  03:10 [0m[15D[0m[4m/[0m[4mc[24m[90momponents/[39m[K[10D[4mc[39m[4mo[24m[4mo[39m[4mn[24m[K[2C[1;92m [0m[38;2;160;169;203m  03:10 [0m[13D[90mstants/[39m[K[4mn[39m[4ms[24m[4ms[39m[4mt[39m[4ma[39m[4mn[39m[4mt[39m[4ms[39m[1m[4m/[0m[24m[90mcostant[90ms[90m.js[39m[K[A[62C[1m[4m/[39m[1m[4mm[0m[24m[K[1B[K[A[67C[0m[4m/[0m[4mm[24m[90mail.js[39m [K[A[67C[4mm[39m[4ma[24m[1B[K[A[68C[4ma[39m[4mi[24m[4mi[39m[4ml[39m[4m.[39m[4mj[39m[4ms[24m[1m [0m[1m [0m[90mindex.html[39m[10D[K[?1l>[?2004l
+]2;node src/constants/mail.js]1;nodefile:///home/kirby/Documents/RollyArt/frontend/src/constants/mail.js:1
+const nodemailer = require('nodemailer');
+                   ^
+
+ReferenceError: require is not defined in ES module scope, you can use import instead
+This file is being treated as an ES module because it has a '.js' file extension and '/home/kirby/Documents/RollyArt/frontend/package.json' contains "type": "module". To treat it as a CommonJS script, rename it to use the '.cjs' file extension.
+    at [90mfile:///home/kirby/Documents/RollyArt/frontend/[39msrc/constants/mail.js:1:20
+[90m    at ModuleJob.run (node:internal/modules/esm/module_job:329:25)[39m
+[90m    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:644:26)[39m
+[90m    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)[39m
+
+Node.js v22.17.0
+[1m[7m%[27m[1m[0m                                                                         ]2;kirby@kirby:~/Documents/RollyArt/frontend]1;..yArt/frontend]7;file://kirby/home/kirby/Documents/RollyArt/frontend\[0m[27m[24m[J󰣇 [1;38;2;139;233;253mDocuments/RollyArt/frontend[0m [38;2;145;152;161m  Master[0m [38;2;118;159;240m !? [1;31m❯[0m [K[14C[1;92m [0m[38;2;160;169;203m  03:10 [0m[25D[?1h=[?2004h[?2004l
+[1m[7m%[27m[1m[0m                                                                         ]2;kirby@kirby:~/Documents/RollyArt/frontend]1;..yArt/frontend]7;file://kirby/home/kirby/Documents/RollyArt/frontend\[0m[27m[24m[J󰣇 [1;38;2;139;233;253mDocuments/RollyArt/frontend[0m [38;2;145;152;161m  Master[0m [38;2;118;159;240m !? [1;32m❯[0m [K[14C[1;92m [0m[38;2;160;169;203m  03:11 [0m[25D[?1h=[?2004hc[32mc[39m[32mc[39m[90mlear[39m[32mc[32ml[39m[1m[31mc[1m[31ml[0m[39m[1m[31mc[1m[31ml[1m[31me[0m[39m[1m[31me[1m[31ma[0m[39m[1m[31ma[1m[31mr[0m[39m[0m[32mc[0m[32ml[0m[32me[0m[32ma[0m[32mr[39m[?1l>[?2004l
+]2;clear]1;clear[H[2J[3J[1m[7m%[27m[1m[0m                                                                         ]2;kirby@kirby:~/Documents/RollyArt/frontend]1;..yArt/frontend]7;file://kirby/home/kirby/Documents/RollyArt/frontend\[0m[27m[24m[J󰣇 [1;38;2;139;233;253mDocuments/RollyArt/frontend[0m [38;2;145;152;161m  Master[0m [38;2;118;159;240m !? [1;32m❯[0m [K[14C[1;92m [0m[38;2;160;169;203m  03:11 [0m[25D[?1h=[?2004hc[32mc[39m[32mc[39m[90mlear[39m[32mc[32ml[39m[1m[31mc[1m[31ml[0m[39m[1m[31mc[1m[31ml[1m[31me[0m[39m[1m[31me[1m[31ma[0m[39m[1m[31ma[1m[31mr[0m[39m[0m[32mc[0m[32ml[0m[32me[0m[32ma[0m[32mr[39m[?1l>[?2004l
+]2;clear]1;clear[H[2J[3J[1m[7m%[27m[1m[0m                                                                         ]2;kirby@kirby:~/Documents/RollyArt/frontend]1;..yArt/frontend]7;file://kirby/home/kirby/Documents/RollyArt/frontend\[0m[27m[24m[J󰣇 [1;38;2;139;233;253mDocuments/RollyArt/frontend[0m [38;2;145;152;161m  Master[0m [38;2;118;159;240m !? [1;32m❯[0m [K[14C[1;92m [0m[38;2;160;169;203m  03:12 [0m[25D[?1h=[?2004hn[4mn[24m[4mn[24m[90mode src/constants/mail.js[39m [K[A[48C[4mn[39m[4mp[24m[K[12C[1;92m [0m[38;2;160;169;203m  03:12 [0m[1B[K[A[49C[24m[1m[31mn[24m[1m[31mp[0m[39m[90mm i nodemailer[39m[K[14D[1m[31mn[1m[31mp[1m[31mm[0m[39m[0m[32mn[0m[32mp[0m[32mm[39m[32mm[32m [39m[32mm[39m[39m [39mi[4mi[24m[4mi[39m[4m [24m[24mi[24m [39mn[4mn[24m[4mn[39m[4mo[24m[4mo[39m[4md[24m[4md[39m[4me[24m[4me[39m[4mm[24m[24mn[24mo[24md[24me[24mm[39ma[39mi[39ml[39me[39mr[?1l>[?2004l[1B]2;npm i nodemailer]1;npm[1G[0K⠙[1G[0K⠹[1G[0K⠸[1G[0K[1mnpm[22m [33mwarn[39m [94mERESOLVE[39m overriding peer dependency
+[1G[0K⠸[1G[0K[1mnpm[22m [33mwarn[39m While resolving: vite-plugin-inspect@0.8.9
+[1mnpm[22m [33mwarn[39m Found: vite@7.0.0[2m[22m
+[1mnpm[22m [33mwarn[39m [2mnode_modules/vite[22m
+[1mnpm[22m [33mwarn[39m   [95mpeer[39m vite@"^5.0.0 || ^6.0.0 || ^7.0.0" from @vitejs/plugin-vue@6.0.0[2m[22m
+[1mnpm[22m [33mwarn[39m   [2mnode_modules/@vitejs/plugin-vue[22m
+[1mnpm[22m [33mwarn[39m     [34mdev[39m @vitejs/plugin-vue@"^6.0.0" from the root project
+[1mnpm[22m [33mwarn[39m   3 more (vite-plugin-vue-devtools, vite-plugin-vue-inspector, the root project)
+[1mnpm[22m [33mwarn[39m
+[1mnpm[22m [33mwarn[39m Could not resolve dependency:
+[1mnpm[22m [33mwarn[39m [95mpeer[39m vite@"^3.1.0 || ^4.0.0 || ^5.0.0-0 || ^6.0.1" from vite-plugin-inspect@0.8.9[2m[22m
+[1mnpm[22m [33mwarn[39m [2mnode_modules/vite-plugin-vue-devtools/node_modules/vite-plugin-inspect[22m
+[1mnpm[22m [33mwarn[39m   vite-plugin-inspect@"0.8.9" from vite-plugin-vue-devtools@7.7.7[2m[22m
+[1mnpm[22m [33mwarn[39m   [2mnode_modules/vite-plugin-vue-devtools[22m
+[1mnpm[22m [33mwarn[39m
+[1mnpm[22m [33mwarn[39m Conflicting peer dependency: vite@6.3.5[2m[22m
+[1mnpm[22m [33mwarn[39m [2mnode_modules/vite[22m
+[1mnpm[22m [33mwarn[39m   [95mpeer[39m vite@"^3.1.0 || ^4.0.0 || ^5.0.0-0 || ^6.0.1" from vite-plugin-inspect@0.8.9[2m[22m
+[1mnpm[22m [33mwarn[39m   [2mnode_modules/vite-plugin-vue-devtools/node_modules/vite-plugin-inspect[22m
+[1mnpm[22m [33mwarn[39m     vite-plugin-inspect@"0.8.9" from vite-plugin-vue-devtools@7.7.7[2m[22m
+[1mnpm[22m [33mwarn[39m     [2mnode_modules/vite-plugin-vue-devtools[22m
+[1G[0K⠸[1G[0K⠼[1G[0K⠴[1G[0K⠦[1G[0K⠧[1G[0K⠇[1G[0K
+up to date, audited 204 packages in 1s
+[1G[0K⠇[1G[0K
+[1G[0K⠇[1G[0K49 packages are looking for funding
+[1G[0K⠇[1G[0K  run `npm fund` for details
+[1G[0K⠇[1G[0K
+found [32m[1m0[22m[39m vulnerabilities
+[1G[0K⠇[1G[0K[1m[7m%[27m[1m[0m                                                                         ]2;kirby@kirby:~/Documents/RollyArt/frontend]1;..yArt/frontend]7;file://kirby/home/kirby/Documents/RollyArt/frontend\[0m[27m[24m[J󰣇 [1;38;2;139;233;253mDocuments/RollyArt/frontend[0m [38;2;145;152;161m  Master[0m [38;2;118;159;240m !? [1;32m❯[0m [K[14C[1;92m [0m[38;2;160;169;203m  03:12 [0m[25D[?1h=[?2004hc[32mc[39m[32mc[39m[90mlear[39m[32mc[32ml[39m[1m[31mc[1m[31ml[0m[39m[1m[31mc[1m[31ml[1m[31me[0m[39m[1m[31me[1m[31ma[0m[39m[0m[39mc[0m[39ml[0m[39me[0m[39ma[39mr[32mc[32ml[32me[32ma[32mr[39m[?1l>[?2004l
+]2;clear]1;clear[H[2J[3J[1m[7m%[27m[1m[0m                                                                         ]2;kirby@kirby:~/Documents/RollyArt/frontend]1;..yArt/frontend]7;file://kirby/home/kirby/Documents/RollyArt/frontend\[0m[27m[24m[J󰣇 [1;38;2;139;233;253mDocuments/RollyArt/frontend[0m [38;2;145;152;161m  Master[0m [38;2;118;159;240m !? [1;32m❯[0m [K[14C[1;92m [0m[38;2;160;169;203m  03:12 [0m[25D[?1h=[?2004hclear[32mc[32ml[32me[32ma[32mr[39m[32mn[32mp[32mm[32m [32mi[39m nodemailer[K[14D[32mm[39m[39m [39mi[11C[16D[32mn[32mo[32md[39me src/constants/mail.js [K[A[49C[32md[32me[39m [4ms[4mr[4mc[4m/[4mc[4mo[4mn[4ms[4mt[4ma[4mn[4mt[4ms[4m/[4mm[4ma[4mi[4ml[4m.[4mj[4ms[24m [K[?1l>[?2004l
+]2;node src/constants/mail.js]1;nodefile:///home/kirby/Documents/RollyArt/frontend/src/constants/mail.js:30
+
+
+
+SyntaxError: Invalid or unexpected token
+[90m    at compileSourceTextModule (node:internal/modules/esm/utils:344:16)[39m
+[90m    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:105:18)[39m
+[90m    at #translate (node:internal/modules/esm/loader:534:12)[39m
+[90m    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:581:27)[39m
+[90m    at async ModuleJob._link (node:internal/modules/esm/module_job:154:19)[39m
+
+Node.js v22.17.0
+[1m[7m%[27m[1m[0m                                                                         ]2;kirby@kirby:~/Documents/RollyArt/frontend]1;..yArt/frontend]7;file://kirby/home/kirby/Documents/RollyArt/frontend\[0m[27m[24m[J󰣇 [1;38;2;139;233;253mDocuments/RollyArt/frontend[0m [38;2;145;152;161m  Master[0m [38;2;118;159;240m !? [1;31m❯[0m [K[14C[1;92m [0m[38;2;160;169;203m  03:12 [0m[25D[?1h=[?2004hnode src/constants/mail.js [K[A[47C[32mn[32mo[32md[32me[39m [4ms[4mr[4mc[4m/[4mc[4mo[4mn[4ms[4mt[4ma[4mn[4mt[4ms[4m/[4mm[4ma[4mi[4ml[4m.[4mj[4ms[24m [K[A[47C[K[14C[1;92m [0m[38;2;160;169;203m  03:12 [0m[1B[K[A[47Cnode src/constants/mail.js [K[A[47C[32mn[32mo[32md[32me[39m [4ms[4mr[4mc[4m/[4mc[4mo[4mn[4ms[4mt[4ma[4mn[4mt[4ms[4m/[4mm[4ma[4mi[4ml[4m.[4mj[4ms[24m [K[?1l>[?2004l
+]2;node src/constants/mail.js]1;nodefile:///home/kirby/Documents/RollyArt/frontend/src/constants/mail.js:1
+const nodemailer = require('nodemailer')
+                   ^
+
+ReferenceError: require is not defined in ES module scope, you can use import instead
+This file is being treated as an ES module because it has a '.js' file extension and '/home/kirby/Documents/RollyArt/frontend/package.json' contains "type": "module". To treat it as a CommonJS script, rename it to use the '.cjs' file extension.
+    at [90mfile:///home/kirby/Documents/RollyArt/frontend/[39msrc/constants/mail.js:1:20
+[90m    at ModuleJob.run (node:internal/modules/esm/module_job:329:25)[39m
+[90m    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:644:26)[39m
+[90m    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)[39m
+
+Node.js v22.17.0
+[1m[7m%[27m[1m[0m                                                                         ]2;kirby@kirby:~/Documents/RollyArt/frontend]1;..yArt/frontend]7;file://kirby/home/kirby/Documents/RollyArt/frontend\[0m[27m[24m[J󰣇 [1;38;2;139;233;253mDocuments/RollyArt/frontend[0m [38;2;145;152;161m  Master[0m [38;2;118;159;240m !? [1;31m❯[0m [K[14C[1;92m [0m[38;2;160;169;203m  03:12 [0m[25D[?1h=[?2004hc[32mc[39m[32mc[39m[90mlear[39m[32mc[32ml[39m[1m[31mc[1m[31ml[0m[39m[1m[31mc[1m[31ml[1m[31me[0m[39m[1m[31me[1m[31ma[0m[39m[1m[31ma[1m[31mr[0m[39m[0m[32mc[0m[32ml[0m[32me[0m[32ma[0m[32mr[39m[?1l>[?2004l
+]2;clear]1;clear[H[2J[3J[1m[7m%[27m[1m[0m                                                                         ]2;kirby@kirby:~/Documents/RollyArt/frontend]1;..yArt/frontend]7;file://kirby/home/kirby/Documents/RollyArt/frontend\[0m[27m[24m[J󰣇 [1;38;2;139;233;253mDocuments/RollyArt/frontend[0m [38;2;145;152;161m  Master[0m [38;2;118;159;240m !? [1;32m❯[0m [K[14C[1;92m [0m[38;2;160;169;203m  03:12 [0m[25D[?1h=[?2004hclear[32mc[32ml[32me[32ma[32mr[39m[32mn[32mo[32md[32me[32m [39msrc/constants/mail.js [K[A[50C[32me[39m[39m [4ms[4mr[4mc[4m/[4mc[4mo[4mn[4ms[4mt[4ma[4mn[4mt[4ms[4m/[4mm[4ma[4mi[4ml[4m.[4mj[4ms[24m [K[?1l>[?2004l
+]2;node src/constants/mail.js]1;nodefile:///home/kirby/Documents/RollyArt/frontend/src/constants/mail.js:30
+
+
+
+SyntaxError: Invalid or unexpected token
+[90m    at compileSourceTextModule (node:internal/modules/esm/utils:344:16)[39m
+[90m    at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:105:18)[39m
+[90m    at #translate (node:internal/modules/esm/loader:534:12)[39m
+[90m    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:581:27)[39m
+[90m    at async ModuleJob._link (node:internal/modules/esm/module_job:154:19)[39m
+
+Node.js v22.17.0
+[1m[7m%[27m[1m[0m                                                                         ]2;kirby@kirby:~/Documents/RollyArt/frontend]1;..yArt/frontend]7;file://kirby/home/kirby/Documents/RollyArt/frontend\[0m[27m[24m[J󰣇 [1;38;2;139;233;253mDocuments/RollyArt/frontend[0m [38;2;145;152;161m  Master[0m [38;2;118;159;240m !? [1;31m❯[0m [K[14C[1;92m [0m[38;2;160;169;203m  03:13 [0m[25D[?1h=[?2004h[?2004l
+[1m[7m%[27m[1m[0m                                                                         ]2;kirby@kirby:~/Documents/RollyArt/frontend]1;..yArt/frontend]7;file://kirby/home/kirby/Documents/RollyArt/frontend\[0m[27m[24m[J󰣇 [1;38;2;139;233;253mDocuments/RollyArt/frontend[0m [38;2;145;152;161m  Master[0m [38;2;118;159;240m !? [1;32m❯[0m [K[14C[1;92m [0m[38;2;160;169;203m  03:14 [0m[25D[?1h=[?2004hc[32mc[39m[32mc[39m[90mlear[39m[32mc[32ml[39m[1m[31mc[1m[31ml[0m[39m[1m[31mc[1m[31ml[1m[31me[0m[39m[1m[31me[1m[31ma[0m[39m[1m[31ma[1m[31mr[0m[39m[0m[32mc[0m[32ml[0m[32me[0m[32ma[0m[32mr[39m[?1l>[?2004l
+]2;clear]1;clear[H[2J[3J[1m[7m%[27m[1m[0m                                                                         ]2;kirby@kirby:~/Documents/RollyArt/frontend]1;..yArt/frontend]7;file://kirby/home/kirby/Documents/RollyArt/frontend\[0m[27m[24m[J󰣇 [1;38;2;139;233;253mDocuments/RollyArt/frontend[0m [38;2;145;152;161m  Master[0m [38;2;118;159;240m !? [1;32m❯[0m [K[14C[1;92m [0m[38;2;160;169;203m  03:14 [0m[25D[?1h=[?2004hclear[32mc[32ml[32me[32ma[32mr[39m[32mn[32mo[32md[32me[32m [39msrc/constants/mail.js [K[A[50C[32me[39m[39m [4ms[4mr[4mc[4m/[4mc[4mo[4mn[4ms[4mt[4ma[4mn[4mt[4ms[4m/[4mm[4ma[4mi[4ml[4m.[4mj[4ms[24m [K[?1l>[?2004l
+]2;node src/constants/mail.js]1;nodefile:///home/kirby/Documents/RollyArt/frontend/src/constants/mail.js:1
+const nodemailer = require('nodemailer')
+                   ^
+
+ReferenceError: require is not defined in ES module scope, you can use import instead
+This file is being treated as an ES module because it has a '.js' file extension and '/home/kirby/Documents/RollyArt/frontend/package.json' contains "type": "module". To treat it as a CommonJS script, rename it to use the '.cjs' file extension.
+    at [90mfile:///home/kirby/Documents/RollyArt/frontend/[39msrc/constants/mail.js:1:20
+[90m    at ModuleJob.run (node:internal/modules/esm/module_job:329:25)[39m
+[90m    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:644:26)[39m
+[90m    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)[39m
+
+Node.js v22.17.0
+[1m[7m%[27m[1m[0m                                                                         ]2;kirby@kirby:~/Documents/RollyArt/frontend]1;..yArt/frontend]7;file://kirby/home/kirby/Documents/RollyArt/frontend\[0m[27m[24m[J󰣇 [1;38;2;139;233;253mDocuments/RollyArt/frontend[0m [38;2;145;152;161m  Master[0m [38;2;118;159;240m !? [1;31m❯[0m [K[14C[1;92m [0m[38;2;160;169;203m  03:14 [0m[25D[?1h=[?2004h
+Script done on 2025-07-11 03:17:45+02:00 [COMMAND_EXIT_CODE="0"]

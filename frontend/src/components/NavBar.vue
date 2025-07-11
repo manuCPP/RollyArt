@@ -3,158 +3,179 @@ import { ref } from 'vue'
 import { useWindowSize } from '@vueuse/core'
 
 const { width } = useWindowSize()
-const isActive = ref(false);
+const isMenuOpen = ref(false)
 
-const toggleMenu = () =>{
-    isActive.value = !isActive.value;
-    console.log(isActive.value);
+const toggleMenu = () => {
+  isMenuOpen.value = !isMenuOpen.value
+}
+
+const closeMenu = () => {
+  isMenuOpen.value = false
 }
 </script>
 
-
 <template>
-    <nav>
-        <h1>RollyArt</h1>
-        <div v-show="width < 767" :class="`menu-wrap ${isActive ? 'open' : ''}`">
-            <button @click="toggleMenu()"><img style="background-color: transparent;" src="@/assets/menu.png" width="100%" height="100%" alt=""></button>
-            <RouterLink to="/" v-show="isActive" class="link">Home</RouterLink>
-            <RouterLink to="/add" v-show="isActive" class="link">About</RouterLink>
-            <RouterLink to="/sold" v-show="isActive" class="link">Sold</RouterLink>
-            <RouterLink v-show="isActive" class="link">Contact</RouterLink>
-        </div>
+  <nav class="navbar">
+    <h1 class="brand">RollyArt</h1>
 
-        <div v-show="width > 767" class="normalNav">
-            <RouterLink to="/" class="normalLink">Home</RouterLink>
-            <RouterLink to="/add" class="normalLink">About</RouterLink>
-            <RouterLink to="/sold" class="normalLink">Sold</RouterLink>
-            <RouterLink class="normalLink">Contact</RouterLink>
+    <!-- Bottone menu mobile -->
+    <button v-if="width < 767" class="menu-btn" @click="toggleMenu">
+      <img src="@/assets/menu.png" alt="Menu" />
+    </button>
+
+    <!-- Overlay + menu mobile -->
+    <transition name="fade-slide">
+      <div v-show="isMenuOpen" class="mobile-wrapper">
+        <div class="overlay" @click="closeMenu"></div>
+        <div class="mobile-menu">
+          <RouterLink to="/" class="mobile-link" @click="closeMenu">Home</RouterLink>
+<!--           <RouterLink to="/add" class="mobile-link" @click="closeMenu">About</RouterLink>
+ -->          <RouterLink to="/sold" class="mobile-link" @click="closeMenu">Sold</RouterLink>
+          <RouterLink to="/contact" class="mobile-link" @click="closeMenu">Contact</RouterLink>
         </div>
-    </nav>
+      </div>
+    </transition>
+
+    <!-- Menu desktop -->
+    <div v-show="width >= 767" class="desktop-menu">
+      <RouterLink to="/" class="nav-link">Home</RouterLink>
+<!--       <RouterLink to="/add" class="nav-link">About</RouterLink>
+ -->      <RouterLink to="/sold" class="nav-link">Sold</RouterLink>
+      <RouterLink to="/contact" class="nav-link contact">Contact</RouterLink>
+    </div>
+  </nav>
 </template>
 
-
 <style scoped>
-    .normalNav{
+.navbar {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  height: 8vh;
+  background-color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  z-index: 300;
+}
 
-        height: 100%;
-        width: 45vw;
+.brand {
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 2rem;
+  font-weight: 500;
+  color: #333;
+}
 
+.menu-btn {
+  background: none;
+  border: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  cursor: pointer;
+  z-index: 350;
+}
 
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
+.menu-btn img {
+  width: 100%;
+  height: 100%;
+}
 
-    .normalLink{
-        font-family: Inter;
-        font-size: 1rem;
-        text-decoration: none;
-        color: rgb(49, 49, 49);
-        transition: 0.2s ease-out;
-    }
+.mobile-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: flex-end;
+  z-index: 250;
+}
 
-    .normalLink:hover{
-        scale: 1.05;
-        color: black;
-        font-weight: 500;
-        cursor: pointer;
+.overlay {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 200;
+}
 
-    }
+.mobile-menu {
+  width: 70vw;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.96);
+  box-shadow: -4px 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  z-index: 300;
+  animation: slideIn 0.3s ease-out;
+}
 
-    .normalLink:nth-child(4){
-        border: solid 2px black;
-        font-weight: 600;
-        padding: 0.5rem 1rem;
-        border-radius: 2rem;
-        transition: 0.5s ease-out;
-    }
+.mobile-link {
+  margin: 0 4rem 1rem 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.2rem;
+  color: #333;
+  text-decoration: none;
+  border-bottom: 1px solid #eee;
+  padding-block: 0.5rem;
+  transition: all 0.3s;
+}
 
-    .normalLink:nth-child(4):hover{
-        background-color: black;
-        color: white;
-        font-weight: 500;
-        scale: 1.1;
-        cursor: pointer;
-    }
+.mobile-link:hover {
+  color: #000;
+  background-color: rgba(130, 130, 130, 0.1);
+}
 
+.desktop-menu {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
 
+.nav-link {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  text-decoration: none;
+  color: #333;
+  transition: all 0.3s ease;
+}
 
-    .link{
-        width: 100%;
-        height: 4vh;
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        /*border-top: solid 1px rgb(196, 196, 196);*/
-        margin-block: 1rem;
+.nav-link:hover {
+  color: #000;
+  transform: scale(1.05);
+}
 
+.contact {
+  border: 2px solid #000;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  font-weight: 600;
+}
 
-        text-decoration: none;
-        color: black;
-        font-family: sans-serif;
-    }
+.contact:hover {
+  background-color: #000;
+  color: #fff;
+  transform: scale(1.1);
+}
 
-    .link:hover{
-        background-color: rgb(219, 216, 216);
-    }
+/* Transizioni */
+.fade-slide-enter-active,
+.fade-slide-leave-active {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.fade-slide-enter-from,
+.fade-slide-leave-to {
+  opacity: 0;
+  transform: translateX(100%);
+}
 
-    .open{
-        width: 30vw;
-        height: 100vh;
-        position: absolute;
-        top: 0;
-        right: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-        padding: 2rem;
-        padding-top: 2.5rem;
-        button{
-            margin-bottom: 2rem;
-        }
-
-        background-color: rgb(239, 239, 239) !important;
-    }
-
-    .menu-wrap{
-        background-color: transparent;
-        transition: 0.3 ease-out;
-    }
-
-    nav{
-        height: 8vh;
-
-
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-
-        padding: 1rem;
-    }
-
-    button{
-        border: none;
-        height: 2vh;
-        width: 2vh;
-        background-color: transparent;
-
-
-    }
-
-    button:hover{
-        background-color: gray;
-        cursor: pointer;
-    }
-
-    button:active{
-
-    background: #0056b3;
-    transform: scale(0.97);
-    }
-
-    h1{
-        font-family: Ubuntu;
-        font-size: 2rem;
-        font-weight: 500;
-    }
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
 </style>

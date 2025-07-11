@@ -1,6 +1,18 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 
+// 🔐 Protezione con password lato client
+const isAuthorized = ref(false)
+const correctPassword = 'Arte2025' // ✨ Personalizza la password qui
+
+onMounted(() => {
+  const risposta = prompt("Inserisci una password")
+  if (risposta === correctPassword) {
+    isAuthorized.value = true
+  } else {
+    alert("Accesso negato. Password errata.")
+  }
+})
 
 const fileInput = ref(null)
 const selectedFile = ref(null)
@@ -26,7 +38,6 @@ const formData = ref({
   price: '',
   isSold: false,
 })
-
 
 function convertToBlob(file) {
   return new Promise((resolve) => {
@@ -59,10 +70,8 @@ const buildData = async () => {
   formToSend.append('isSold', formData.value.isSold)
 
   if (selectedFile.value) {
-    //formToSend.append('image', selectedFile.value)
     const blob = await convertToBlob(selectedFile.value)
     formToSend.append('image', blob, 'converted.jpg')
-
   }
 
   return formToSend
@@ -74,141 +83,171 @@ const sendFormData = async () => {
       method: 'POST',
       body: await buildData()
     })
-
     const text = await response.text()
     console.log('Risposta grezza:', text)
-
-
   } catch (error) {
     console.error('Errore durante l’invio:', error)
   }
 }
-
 </script>
 
 <template>
-    <div class="wrapper">
+  <div v-if="isAuthorized" class="wrapper">
+    <form @submit.prevent="sendFormData">
+      <h1>Crea una nuova opera</h1>
+      <input v-model="formData.title" placeholder="Inserisci un Titolo" type="text">
+      <div class="row">
+        <input v-model="formData.tecnique" placeholder="Tecnica usata" type="text">
+        <input v-model="formData.dimension" placeholder="Dimensione" type="text">
+      </div>
+      <input v-model="formData.author" placeholder="Inserisci qui l'autore" type="text">
+      <div class="row">
+        <input v-model="formData.date" placeholder="Inserisci la data" type="text">
+        <input v-model="formData.price" placeholder="Inserisci qui il prezzo" type="text">
+      </div>
+      <div class="row2">
+        <input class="imgBtn checkbox" style="width: 2vh; height: 2vh;" type="checkbox" v-model="formData.isSold">
+        <label class="imgLabel">Venduto</label>
+      </div>
+      <div class="row2">
+        <button class="imgBtn" type="button" @click="simulateClick">Upload File</button>
+        <input @change="handleFileChange" ref="fileInput" type="file" style="display: none;">
+        <label class="imgLabel">{{ selectedFile ? selectedFile.name : 'Nessuna immagine' }}</label>
+      </div>
+      <button type="submit">AGGIUNGI OPERA</button>
+    </form>
+  </div>
 
-        <form @submit.prevent="sendFormData" style="width: 80%; height: 65%; padding: 1rem; border-radius: 0.5rem; background-color: white; box-shadow: 0px 4px 8px 2px #dad8d8; display: flex; flex-direction: column; justify-content: center; align-items: center;">
-            <h1>Crea una nuova opera</h1>
-            <input v-model="formData.title" placeholder="Inserisci un Titolo" type="text">
-            <div class="row">
-                <input v-model="formData.tecnique" placeholder="Tecnica usata" type="text">
-                <input v-model="formData.dimension" placeholder="Dimensione" type="text">
-            </div>
-            <input v-model="formData.author" placeholder="Inserisci qui L'autore" type="text">
-            <div class="row">
-                <input v-model="formData.date" placeholder="Inserisci la data" type="text">
-                <input v-model="formData.price" placeholder="Inserisci qui il prezzo" type="text">
-            </div>
-
-            <div class="row" style="display: flex; align-items: center; justify-content: space-between; background-color: transparent; ">
-              <input style=" width: 4vh;  background-color: red;" type="checkbox" v-model="formData.isSold">
-              <label style="display: flex; justify-content: center; text-align: left; " for="">Venduto</label>
-            </div>
-
-            <div class="row">
-                <button type="button" @click="simulateClick" style="color: rgb(18, 95, 238); background-color: white; width: 50%;" >Upload File</button>
-                <input @change="handleFileChange" ref="fileInput" type="file" style="display: none;">
-                <label style="text-align: center;" for="">{{ selectedFile ? `${selectedFile?.name}` : 'Nessuna immagine' }}</label>
-            </div>
-
-
-            <button type="submit">AGGIUNGI OPERA</button>
-        </form>
-
-
-    </div>
-    <div class="debug">
-  <pre>File: {{ selectedFile?.name }}</pre>
-</div>
-
+  <div v-else class="wrapper2" style="height: 75vh;">
+    <h2>Accesso non autorizzato</h2>
+    <p>Ricarica la pagina per riprovare.</p>
+  </div>
 </template>
 
 <style scoped>
-    h1{
-        font-family: Inter, sans-serif;
-        font-size: 1.5rem;
-    }
+.wrapper {
+  padding-block: 5rem;
+  background-color: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
 
-    label{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-top: 2rem;
-        width: 50%;
-        height: 4vh;
+.wrapper2 {
+  background-color: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 88vh !important;
+  gap: 1rem;
 
-
-
-        color: rgb(135, 135, 135);
-
-        font-family: Inter;
-        font-size: 1rem;
-
-        font-weight: 400;
-        transition: 0.2s ease-out;
-    }
-
-    .row{
-        display: flex;
-        align-items: center;
+    h2{
+        text-align: center;
         width: 100%;
+        color: rgb(190, 188, 188);
+        font-size: 2.5rem;
+        font-family: Ubuntu, sans-serif;
+        font-weight: 300;
     }
 
-    .wrapper{
-        height: 88.5vh;
-        background-color: #f5f5f5;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 2rem;
-    }
-
-    input{
-        margin-top: 2rem;
-        width: calc(100% - 2rem);
-        height: 4vh;
-        padding-inline: 1rem;
-        border-radius: 2rem;
-        border: solid 1px rgb(208, 208, 208);
-        box-shadow: 0px 4px 4px #dedede;
-    }
-
-    button{
-        margin-top: 2rem;
-        width: calc(100% );
-        height: 4vh;
-        padding-inline: 1rem;
-        border-radius: 2rem;
-        border: solid 1px rgb(208, 208, 208);
-        box-shadow: 0px 4px 4px #dedede;
-        background-color: rgb(18, 95, 238);
-
-        font-family: Inter;
+    p{
+        text-align: center;
+        width: 100%;
+        color: rgb(86, 86, 86);
         font-size: 1rem;
-        color: white;
-        font-weight: 600;
-        transition: 0.2s ease-out;
+        font-family: Inter, sans-serif;
+        font-weight: 400;
     }
 
-    button:hover{
-        background-color: rgba(18, 95, 238, 0.845);
-        scale: 1.025;
-        cursor: pointer;
-    }
+}
 
-    @media (min-width: 768px) {
-        form{
-            height: 80% !important;
-            padding: 2rem !important;
-            width: 50% !important;
-        }
-        input, button{
-          height: 5vh;
-        }
-    }
+form {
+  width: 80%;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: white;
+  box-shadow: 0px 4px 8px 2px #dad8d8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
+h1 {
+  font-family: Inter, sans-serif;
+  font-size: 1.5rem;
+  color: rgb(0, 0, 47);
+}
 
+input {
+  margin-top: 1rem;
+  width: calc(100% - 2rem);
+  height: 5vh;
+  padding-inline: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #e2e2e2;
+  box-shadow: 0px 2px 4px #f0eded;
+}
+
+input[type="checkbox"] {
+  accent-color: rgb(0, 0, 47);
+}
+
+button {
+  margin-top: 2rem;
+  width: 100%;
+  height: 5vh;
+  border-radius: 0.5rem;
+  border: 1px solid #d0d0d0;
+  box-shadow: 0px 4px 4px #dedede;
+  background-color: rgb(0, 0, 47);
+  color: white;
+  font-family: Inter;
+  font-weight: 600;
+  transition: 0.2s ease-out;
+}
+
+button:hover {
+  background-color: rgba(0, 0, 47, 0.85);
+  transform: scale(1.025);
+  cursor: pointer;
+}
+
+.row, .row2 {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 0.8rem;
+  align-items: center;
+}
+
+.row {
+  margin-block: 1rem;
+}
+
+.imgLabel {
+  font-size: 1rem;
+  font-weight: 300;
+  margin-top: 0;
+  color: #878787;
+}
+
+.imgBtn {
+  margin-top: 1.5rem;
+  background-color: white;
+  border: 2px solid rgb(0, 0, 47);
+  color: rgb(0, 0, 47);
+}
+
+@media (min-width: 768px) {
+  form {
+    width: 50% !important;
+    padding: 2rem !important;
+  }
+
+  .row {
+    flex-direction: row;
+  }
+}
 </style>

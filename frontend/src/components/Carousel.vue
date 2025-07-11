@@ -1,12 +1,14 @@
 <template>
   <div class="carousel">
     <div class="carousel-track" ref="track">
-      <img
-        v-for="(img, index) in opere"
-        :key="index"
-        :src="`${backend}/storage/${img.imgPath}`"
-        :alt="'img' + index"
-      />
+        <RouterLink class="routerLink" v-for="(img, index) in opere" :to="`opera/${img.id}`">
+            <img
+                
+                :key="index"
+                :src="`${backend}/storage/${img.imgPath}`"
+                :alt="'img' + index"
+            />
+        </RouterLink>
 
     </div>
 
@@ -17,6 +19,7 @@
 
 <!--
 -->
+
         <img
           v-for="(img, index) in opere"
           :key="'thumb-' + index"
@@ -61,6 +64,8 @@ async function getOpere() {
     console.error('Errore durante il fetch:', error);
   }
 }
+
+
 
 getOpere()
 
@@ -129,7 +134,7 @@ watch(currentIndex, async (newIndex) => {
 }
 
 .carousel-track img {
-  height: 95%;
+  height: 100%;
   padding-inline: 0rem;
   flex-shrink: 0;
   border-radius: 8px;
@@ -139,7 +144,18 @@ watch(currentIndex, async (newIndex) => {
   scroll-snap-align: center;
 }
 
-.carousel-track img:hover {
+.routerLink{
+    height: 95%;
+  padding-inline: 0rem;
+  flex-shrink: 0;
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0px 0px 8px 4px rgb(141, 141, 141);
+  transition: 0.5s ease-out;
+  scroll-snap-align: center;
+}
+
+.carousel-track .routerLink:hover {
     transform: translateY(-1rem);
     cursor: pointer;
 }

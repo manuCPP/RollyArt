@@ -5,8 +5,7 @@
         </div>
         <div class="contenitoreContainer">
             <div class="text">
-                <h1>{{ opera.title}}</h1>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Velit deserunt facilis optio aliquid mollitia debitis ratione architecto? Suscipit, dolore harum.</p>
+                <h1 style="margin-bottom: 1rem;">{{ opera.title}}</h1>
             </div>
 
             <div class="cards">
@@ -27,7 +26,9 @@
                     <h3>Incluso certificato di autenticita'</h3>
                 </div>
             </div>
-            <button>Contatta per Acquisto</button>
+            <RouterLink to="/contact" class="linkRouter">
+                Contattami Qui
+            </RouterLink>
         </div>
     </div>
 </template>
@@ -48,16 +49,18 @@
 
     .contenitoreContainer{
         width: 100vw;
+
        display: flex;
        flex-direction: column;
        justify-content: space-evenly;
        align-items: center;
     }
 
-    button{
+    button, .linkRouter{
         background-color: rgb(0, 0, 47);
         width: 90%;
-        height: 5vh;
+        height: 6vh;
+        text-decoration: none;
         border: none;
         border-radius: .5rem;
         color: white;
@@ -67,6 +70,15 @@
         margin-bottom: 2rem;
         margin-top: 1rem;
         max-width: 1340px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 0.2s ease-out;
+    }
+
+    .linkRouter:active{
+        background-color: rgba(0, 0, 41, 1) !important;
+
     }
 
     h1{
@@ -130,7 +142,7 @@
 
     .priceCard{
         width: 90%;
-        height: 20vh;
+        height: auto;
         background-color: rgb(235, 235, 235);
         border-radius: 0.7rem;
         border: solid 1px rgb(219, 219, 219);
@@ -145,6 +157,7 @@
         font-family: Inter, sans-serif;
         font-weight: 400;
         font-size: 1rem;
+
     }
 
     .col{
@@ -195,7 +208,7 @@
             flex-direction: row;
         }
         .imgContainer, .contenitoreContainer{
-            margin-inline: 2rem;
+            margin-left: 2rem;
         }
         .imgContainerVertical{
         width: 30vw;
@@ -206,12 +219,17 @@
     }
 
 
-        button{
+        button, .linkRouter{
             margin-bottom: 0rem;
         }
 
+        .linkRouter:hover{
+            background-color: rgba(0, 0, 47, 0.6);
+            cursor: pointer;
+        }
+
         .contenitoreContainer{
-            width: 50vw;
+            width: 60vw;
             padding-block: 2rem;
             background-color: white;
         }

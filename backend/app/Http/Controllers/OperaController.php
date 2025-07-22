@@ -42,7 +42,7 @@ public function store(Request $request)
         Opera::create($validated);
 
         return response()->json([
-            'message' => 'Opera aggiunta con successo (upload immagine test)',
+            'message' => 'Opera aggiunta',
             'data' => $validated
         ]);
     } catch (\Exception $e) {
@@ -73,8 +73,17 @@ public function store(Request $request)
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $opera = Opera::find($id);
+
+        if (!$opera) {
+            return response()->json(['message' => 'Opera non trovata'], 404);
+        }
+
+        $opera->delete();
+
+        return response()->json(['message' => 'Opera rimossa con successo'], 200);
     }
+
 }

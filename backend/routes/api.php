@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use App\Models\Opera;
 use App\Http\Controllers\OperaController;
 use Illuminate\Http\Request;
@@ -21,3 +22,7 @@ Route::get('/immagini/{filename}', function($filename){
 
     return response()->file($path);
 });
+
+Route::post('/contact', [ContactController::class,'send']);
+Route::delete('/opera/{id}', [OperaController::class, 'destroy']);
+

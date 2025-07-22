@@ -1,5 +1,6 @@
 <script setup>
 import { ref, onMounted } from 'vue'
+import { AkCircleCheckFill } from '@kalimahapps/vue-icons'
 
 // 🔐 Protezione con password lato client
 const isAuthorized = ref(false)
@@ -84,10 +85,48 @@ const sendFormData = async () => {
       body: await buildData()
     })
     const text = await response.text()
+    const json = JSON.parse(text);
+
     console.log('Risposta grezza:', text)
+
+    console.log(json.message)
+    if(json.message == 'Opera aggiunta'){
+        message.value = 'Opera aggiunta con successo !'
+        resetForm()
+    }
+    else{
+        message.value = 'Opera non aggiunta!'
+        icon.value = false;
+    }
+    showPopup()
+
   } catch (error) {
     console.error('Errore durante l’invio:', error)
   }
+}
+
+const message = ref('');
+const icon = ref('true');
+
+
+const isPopVisible = ref(false);
+const showPopup = () => {
+    isPopVisible.value = true;
+
+}
+const hidePopup = () => {
+    isPopVisible.value = false;
+}
+
+const resetForm = () => {
+  formData.value.title = '';
+  formData.value.author = '';
+  formData.value.dimension = '';
+  formData.value.tecnique = '';
+  formData.value.date = '';
+  formData.value.price = '';
+  formData.value.isSold = false;
+  selectedFile.value = null;
 }
 </script>
 
@@ -116,15 +155,66 @@ const sendFormData = async () => {
       </div>
       <button type="submit">AGGIUNGI OPERA</button>
     </form>
+
+
+
   </div>
 
   <div v-else class="wrapper2" style="height: 75vh;">
     <h2>Accesso non autorizzato</h2>
     <p>Ricarica la pagina per riprovare.</p>
   </div>
+
+  <div @click="hidePopup" v-show="isPopVisible" class="blackBg">
+        <div class="popup">
+            <h4>{{ message }}</h4>
+            <AkCircleCheckFill v-show="icon" style="width: 6vh; height: 6vh; color: rgb(0, 0, 47);"/>
+        </div>
+    </div>
 </template>
 
 <style scoped>
+.blackBg{
+        width: 100vw;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+
+        background-color: rgba(0, 0, 0, 0.3);
+        z-index: 999;
+    }
+
+    .popup{
+        position: inherit;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+
+        width: 90vw;
+        height: 31vh;
+        background-color: white;
+        border-radius: 2rem;
+        box-shadow: 0px 4px 4px rgb(116, 116, 116);
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 2rem;
+        padding: 1rem;
+        box-sizing: border-box;
+    }
+
+    h4{
+        font-family: 'Inter', sans-serif;
+        font-size: 1.7rem;
+        color: rgb(0, 0, 47);
+        font-weight: 600;
+        text-align: center;
+
+    }
+
 .wrapper {
   padding-block: 5rem;
   background-color: #f5f5f5;
@@ -151,6 +241,8 @@ const sendFormData = async () => {
         font-family: Ubuntu, sans-serif;
         font-weight: 300;
     }
+
+
 
     p{
         text-align: center;
@@ -213,6 +305,18 @@ button:hover {
   transform: scale(1.025);
   cursor: pointer;
 }
+
+button:active{
+  background-color: white !important;
+}
+
+  .imgBtn:hover{
+      background-color: rgba(245, 245, 245, 0.7) !important;
+    }
+
+    .imgBtn:active{
+      background-color: rgba(0, 0, 47, 1) !important;
+    }
 
 .row, .row2 {
   display: flex;

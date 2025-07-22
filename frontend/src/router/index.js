@@ -4,6 +4,7 @@ import AddView from '@/views/AddView.vue'
 import SoldView from '@/views/SoldView.vue'
 import OperaView from '@/views/OperaView.vue'
 import ContactView from '@/views/ContactView.vue'
+import RemoveView from '@/views/RemoveView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -17,6 +18,11 @@ const router = createRouter({
       path: '/add',
       name: 'add',
       component: AddView
+    },
+    {
+      path: '/remove',
+      name: 'remove',
+      component: RemoveView
     },
     {
       path: '/sold',

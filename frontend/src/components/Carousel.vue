@@ -3,7 +3,7 @@
     <div class="carousel-track" ref="track">
         <RouterLink class="routerLink" v-for="(img, index) in opere" :to="`opera/${img.id}`">
             <img
-                
+
                 :key="index"
                 :src="`${backend}/storage/${img.imgPath}`"
                 :alt="'img' + index"
@@ -69,18 +69,6 @@ async function getOpere() {
 
 getOpere()
 
-
-const images = [
-  new URL('@/assets/img1.png', import.meta.url).href,
-  new URL('@/assets/img2.png', import.meta.url).href,
-  new URL('@/assets/img3.png', import.meta.url).href,
-  new URL('@/assets/img1.png', import.meta.url).href,
-  new URL('@/assets/img2.png', import.meta.url).href,
-  new URL('@/assets/img3.png', import.meta.url).href,
-  new URL('@/assets/img1.png', import.meta.url).href,
-  new URL('@/assets/img2.png', import.meta.url).href,
-  new URL('@/assets/img3.png', import.meta.url).href,
-]
 
 const track = ref(null)
 const thumbs = ref(null)

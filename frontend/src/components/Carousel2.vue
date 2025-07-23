@@ -59,7 +59,7 @@ async function getOpere() {
     },
     });
     const data = await response.json();
-    opere.value = data.filter((dato) => dato.isSold == 'true');
+    opere.value = data.filter((dato) => dato.isSold == 1);
 
     for (let index = 0; index < data.length; index++) {
         opereImgPath[index] = `${backend}/storage/` + (data[index].imgPath)

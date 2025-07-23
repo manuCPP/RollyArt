@@ -37,7 +37,7 @@ const formData = ref({
   tecnique: '',
   date: '',
   price: '',
-  isSold: false,
+  isSold: 0,
 })
 
 function convertToBlob(file) {
@@ -125,7 +125,7 @@ const resetForm = () => {
   formData.value.tecnique = '';
   formData.value.date = '';
   formData.value.price = '';
-  formData.value.isSold = false;
+  formData.value.isSold = 0;
   selectedFile.value = null;
 }
 </script>

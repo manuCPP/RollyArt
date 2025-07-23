@@ -33,6 +33,8 @@ public function store(Request $request)
             // NIENTE 'image' qui
         ]);
 
+        $validated['isSold'] = $request->boolean('isSold') ? 1 : 0;
+
         if ($request->hasFile('image')) {
             $path = $request->file('image')->store('uploads', 'public');
             $validated['imgPath'] = $path;
